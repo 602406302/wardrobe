@@ -1,0 +1,308 @@
+<!DOCTYPE html><html class="light" lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>衣搭 Wardrobe Palette - 我的搭配</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#c8c6c3",
+                    "tertiary": "#434341",
+                    "secondary-fixed-dim": "#b9cac2",
+                    "on-primary-container": "#cacfff",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#bac3ff",
+                    "tertiary-container": "#5b5a58",
+                    "primary-fixed": "#dee0ff",
+                    "secondary-fixed": "#d5e7de",
+                    "on-primary-fixed": "#00105c",
+                    "on-background": "#1a1c1e",
+                    "surface-container-high": "#e8e8ea",
+                    "on-tertiary-fixed-variant": "#474745",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#293ca0",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#1a1c1e",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#eeeef0",
+                    "on-secondary-container": "#586861",
+                    "surface-bright": "#f9f9fc",
+                    "outline": "#757684",
+                    "on-tertiary-container": "#d4d2cf",
+                    "on-secondary-fixed": "#0f1e19",
+                    "background": "#f9f9fc",
+                    "tertiary-fixed": "#e5e2df",
+                    "secondary-container": "#d5e7de",
+                    "surface-variant": "#e2e2e5",
+                    "surface": "#f9f9fc",
+                    "on-secondary-fixed-variant": "#3a4a44",
+                    "on-surface-variant": "#454652",
+                    "on-tertiary-fixed": "#1c1c1a",
+                    "inverse-surface": "#2f3133",
+                    "surface-container-highest": "#e2e2e5",
+                    "surface-container-low": "#f3f3f6",
+                    "primary-container": "#3f51b5",
+                    "secondary": "#52625b",
+                    "surface-tint": "#4355b9",
+                    "outline-variant": "#c5c5d4",
+                    "primary": "#24389c",
+                    "surface-dim": "#dadadc",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f0f0f3",
+                    "inverse-primary": "#bac3ff",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "stack-lg": "48px",
+                    "stack-md": "24px",
+                    "unit": "4px",
+                    "gutter": "16px",
+                    "container-padding-mobile": "20px",
+                    "container-padding-desktop": "40px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Manrope"],
+                    "display-lg": ["Manrope"],
+                    "title-md": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Manrope"],
+                    "label-caps": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .wardrobe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+        @media (min-width: 768px) {
+            .wardrobe-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 24px;
+            }
+        }
+        .stagger-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen selection:bg-primary/20">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-16 bg-surface/70 dark:bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30">
+<div class="flex items-center gap-4">
+
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">palette</span><h1 class="font-display-lg text-title-md text-primary tracking-tight">衣搭 Wardrobe Palette</h1></div>
+</div>
+
+</header>
+<main class="pt-24 pb-32 px-container-padding-mobile max-w-screen-xl mx-auto">
+<!-- Hero / New Outfit Section -->
+<section class="mb-stack-lg stagger-in visible" style="animation-delay: 0.1s;">
+<div class="relative overflow-hidden rounded-3xl bg-surface-container-highest group cursor-pointer transition-transform duration-500 hover:scale-[1.01]">
+<div class="absolute inset-0 z-0">
+
+</div>
+<div class="relative z-10 p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:text-headline-lg text-primary mb-2">开启新的灵感</h2>
+<p class="font-body-lg text-on-surface-variant max-w-md">将您的单品自由组合，打造属于今天的独特风格。每一个细节都是您的时尚宣言。</p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-full font-title-md shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all w-fit">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 600;">add</span>
+                        新建搭配
+                    </button>
+</div>
+</div>
+</section>
+<!-- Filters / Segmented Control -->
+<nav class="flex items-center gap-2 mb-stack-md overflow-x-auto pb-2 no-scrollbar stagger-in visible" style="animation-delay: 0.2s;">
+<button class="px-6 py-2 rounded-full bg-primary-container text-on-primary font-title-md whitespace-nowrap">全部搭配</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors whitespace-nowrap">职场通勤</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors whitespace-nowrap">休闲周末</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors whitespace-nowrap">节日聚会</button>
+</nav>
+<!-- Outfit Grid -->
+<div class="wardrobe-grid">
+<!-- Outfit Card 1 -->
+<article class="group stagger-in visible" style="animation-delay: 0.3s;">
+<div class="aspect-[3/4] relative bg-surface-container rounded-2xl overflow-hidden mb-3 border border-outline-variant/30 hover:border-primary/40 transition-all duration-300">
+<!-- Photo Mosaic for Outfit Preview -->
+<div class="grid grid-cols-2 grid-rows-2 h-full gap-0.5">
+<div class="bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A minimalist white linen shirt, photographed in high-key natural light against a light gray background, part of a curated wardrobe collection. Professional studio fashion photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh_aUeKvAIr1EIucUpaKkrh8Ih6LrKDHOQb3oOHGRMC4LNLS0A4y6rKVYsBs5qmmi8QodGOdfKG1pqr80BHEfUNBvjeg2bixz30ROGFC99Gq50tgdCX3eOrdax6MH9MK0s0lUZlqsD09bjwN7q7TGUyfi9_pSvz3VifqMfXmN64lqdAWy5Z-SP01vvo-vHb6546vvI8L7Plzo6JZMu8t8-RUYmlLR7v2gyIxm2Se6KjZu7xOEtrmpn" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); transform: scale(1);">
+</div>
+<div class="bg-white overflow-hidden row-span-2">
+<img class="w-full h-full object-cover" data-alt="Bespoke tailored charcoal trousers made from Italian wool, hanging elegantly. Soft shadows and minimalist aesthetic. Part of a stylish outfit combination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj7TJFkh3IfWpSyJfrassC5qn_XVyxN70edRvjqJI4hMsDQDbENzqvpu8LxvLXHNZcE0Lg8eyyYN4ubGW-AxuTTycolK4AEphV_YiRTkyojpJbh6wXrIN2Q3dn2yGAowMEv0pwat5w72KS_LUOy5BOC3duWvPIBf0jK6Gz-zkuH6OkCYhQaq4qww3jbNu9sEzmtCeym2R9kGm6_jko1Y65pHKB6fxp3yN8-4LGEoQS1mB7xI5lzUut" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); transform: scale(1);">
+</div>
+<div class="bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A pair of clean white luxury leather sneakers, minimalist design, captured from a side profile on a neutral studio background. Bright and sophisticated look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjHK6Ud4mL5TV--uPHsypU4P8nC5ZeqKwx7cRSgVckjszpB1QGujjhQhMsMJRwO2y1SBwSvvMb1NO7g5wsAmcAZgTmAV61nQ6H87UEn_6JJE8uAplgoYAWyTD5epDHCXg69E5MxwOXX0LJaeOxNA7UtPPXNUhx9uZAh_w2-qv7OLra27oMnqO6B5sYVVKsseOV_uHlt3MzVLPj3VJ7UiTnISepv3tcUBU9OhZ-AF0yP5OP9MQ6HPcg" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); transform: scale(1);">
+</div>
+</div>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
+</div>
+<div>
+<h3 class="font-title-md text-on-surface mb-1">周一上班穿搭</h3>
+<p class="font-body-sm text-on-surface-variant">专业感十足的极简风，适合会议日</p>
+</div>
+</article>
+<!-- Outfit Card 2 -->
+<article class="group stagger-in visible" style="animation-delay: 0.4s;">
+<div class="aspect-[3/4] relative bg-surface-container rounded-2xl overflow-hidden mb-3 border border-outline-variant/30 hover:border-primary/40 transition-all duration-300">
+<div class="flex h-full gap-0.5">
+<div class="w-1/2 bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="High-quality indigo denim jacket with subtle distressing, shot in a bright minimalist studio. The focus is on the texture and premium fabric. Fashion catalog style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSAa0CTsID47Xve-NA6362oe_F_bZiEmay8VOHjTCUCIJj0SFS5obvLYXq7N7OSgQ6QxgTU9ydVwwDMhDqib4E_uv5Jqm0e4XsEEHO7pTtsc6s71Qkm_a5vv_wY0InKV2UWs5IPB-VC57D-_XP9NcVzCpYXfgfL5jVfnCqfvMhIHxc4QiKeKs_JBgt7JyhATj_JTu1mhSjECGM7yapS2NcCf39e6dPd_4DU8raAK9Chf_YZQWjHs8I" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
+</div>
+<div class="w-1/2 flex flex-col gap-0.5">
+<div class="h-1/2 bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Heavyweight organic cotton black t-shirt, neatly folded on a stone surface, showing soft textures and clean lines. Professional fashion photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeOGm8vK9wW6PryQqUNHQU2M99fKaPEjLfNxfjJpx0mmWLeBxFf7x2u4-bMpBtZeMq-ABBNR82lPYun5ITneYzqwjz9P6yfwPgIczLnhrYXmFqHS5AUaUc3iWp4USkohbO8qhkVo5QvCNQ_fTloCLJYGPZd4TxST8kfF2NyOKfGcoShfFWfmiynq5SJORGbuu9Ef1XYd_eSrbU1EwatvWfiaNs-vYNYOu0tDUyCULRX_4MR0PpwcL3" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
+</div>
+<div class="h-1/2 bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Premium brown leather tote bag with minimal hardware, elegant and functional design. Soft studio lighting on a neutral backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClqEk7TOuBIO1vIb1df9Su9OHXAChg-xRMP3cCrTaqCFLj6UoyEtx5QHloGQvM_NUKXhRDU9skATlDv4UsKmcK2Sna6okJMUeUEhSAe7VsJTtV1FJViLjI6oTDHy2mx8ueLsWyHDeUJACwQK_SnL4U_MnI1ElbsK-Yxyg9yt1dwIyfW6W1uwOWsBKkEVG_kj7t8U2rPT0z250iFpMSx-Wcr9MKoeaXl2yaWXm81vS95GFXCULmTpGA" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-title-md text-on-surface mb-1">周末探店计划</h3>
+<p class="font-body-sm text-on-surface-variant">丹宁与皮革的碰撞，舒适又出片</p>
+</div>
+</article>
+<!-- Outfit Card 3 -->
+<article class="group stagger-in visible" style="animation-delay: 0.5s;">
+<div class="aspect-[3/4] relative bg-surface-container rounded-2xl overflow-hidden mb-3 border border-outline-variant/30 hover:border-primary/40 transition-all duration-300">
+<div class="relative h-full flex flex-col gap-0.5">
+<div class="h-2/3 bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stunning emerald silk slip dress draped elegantly over a velvet chair. High-end editorial fashion shot with moody yet clear lighting. Sophisticated aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlEe93vzebZgmIiFC_k0ndEB9iB9khoUC0xUwCJ6bqLS9BYKVcciw2swkoDzxBqo_bkdOAV911i-kGDbx4a4zUHjzL_GFDyjUCNJ4i5NJUVxUpkDGdGShgcXj5qMKTkTBEQBWK4jWeHeje6uTfuWkTPfA5R3u_cpaFVM9uVpKF9qaaZazvaFece73zanZxpOO5U0jdI9a_DqVuCMvbpjpWRKOthdIwAAPi_136wa-SXz34TB7spi9f" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
+</div>
+<div class="h-1/3 grid grid-cols-2 gap-0.5">
+<div class="bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Minimalist gold jewelry set, a delicate necklace and small hoop earrings on a marble surface. Soft bokeh background, luxurious fashion photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpNbmC4AstDQfkWiPTS8LCo0Su2Ii5oUphqopIJm1o9NEz1-mq3fWPO6xT7bT11vAwCqWyIZEwua0hlZ2bjSgZgHdfV7HKprZwNKBkQ4DSq-2k32WPPaG2qYQxvewg3fkwHKYJIlzGs6b0Kxg7b9m0VeyK9v-o0hjAojPEuGR7FzGKtgbxxHbkVlC7hclSU6KBFTggLQ7bGu0VVA6EaKy_oyb38x0sCezIhLMfPotjRlT7J1W3EbeQ" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
+</div>
+<div class="bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Sleek black high-heeled sandals with thin straps, minimalist silhouette, isolated on a light gray background. Elegant and chic vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnHBjmjQ_ZLCy3bqBTswuX-0T-IpFBljzqbiOnuWLd32kI-6-i7G93pcg8xzW8bu6pgKhlt8JwZO9Zffm3hTdylv2RFazWoyq-NwqedPmBn9KfOheZ2iRsG0SEELfjYDqO3A4ZBSnXj8ZHIZKtD20tcdWFUHel1u-qtR7tFHplpU0aW07fRctS4loxQd65oHCt18vBI4slqiDthKm-oAUv5ki5v_cNdoWHVOXGVgrmXQaQyMMjyZpx" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-title-md text-on-surface mb-1">画展晚宴</h3>
+<p class="font-body-sm text-on-surface-variant">真丝的光泽，在光影下更迷人</p>
+</div>
+</article>
+<!-- Outfit Card 4 -->
+<article class="group stagger-in visible" style="animation-delay: 0.6s;">
+<div class="aspect-[3/4] relative bg-surface-container rounded-2xl overflow-hidden mb-3 border border-outline-variant/30 hover:border-primary/40 transition-all duration-300">
+<div class="grid grid-cols-2 h-full gap-0.5">
+<div class="bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Cream-colored oversized knit sweater, chunky texture, beautifully draped. High-key lighting emphasizing the softness of the wool. Cozy and premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZZCv9ITQArBwHRv8uZpZevlzl8G_TVm1btUSPss9fY3X9HyS7qZNzua93bHJH-Mg9WWb5WAMBokFfgsMSe2LZ1S7Q2Mj4fmLIUqYDcM9gbIgpFAULkjZNnfosTfYPI_bzwquSuI3hj0gLyyvxgsi_B0fWxB3tXX47NxoXaJp3w2C4S997gJ6g5VrBcIZuc-W6wpskJoLT0au-gP0ImXWbKS6XubjbPX8XPhxeo1gqzivzCQphYmDJ" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); transform: scale(1);">
+</div>
+<div class="bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Classic beige trench coat detail, focusing on the belt and epaulettes. Clean minimalist studio environment. Timeless fashion piece." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0yMnqi6NIurh_UETJNnxlgUTuQA33Aa29sn2cSvQNHrPXE0uEI0eiwecZinmRBnPpp746xfyUHFG9oaQm_9CN1CGYSqoxNPM9LLSrEuir6QJzo43NDKvU6-olIx_kUsmGf-zfBHR48lxdvas5cXSeKWGGCa0GwjEh7T5A8uY-ht66bak1smTr9sdIkgsDdrKiGwwWAweR92Ue43b3LLNgh4U2lVZyyfX_3x4HMJ8HC6D12ZWXohdK" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); transform: scale(1);">
+</div>
+<div class="bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Soft cashmere scarf in a camel shade, folded neatly. Minimalist aesthetic, soft morning light, luxurious texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoHzHSUxAbAQfLEFOiWyp1EKTogFT3iUVebGuMX6uVuATUoFo-PH_R4GyxcrSluf8J2OIZ2KqjSjbZtCXEgmd4J5e0T8-UWcJgyoyMk5WYoF81fy8dB0ZxVAHhQbip52SuiGoAWlbSITcZo1OPsVem4-U5ZnHaiwhpcdg6Dfn6j4nLAQUW9K4i7U53lv8DsZ3B1dHS614e1abfeUhHR1mg0sPES4QapHiwBmL7VapNJFNJ6YMpEYSp" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); transform: scale(1);">
+</div>
+<div class="bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Polished black leather Chelsea boots, sleek silhouette against a light background. Professional product photography for a high-end brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH_RpT9TnAvG0BnNZtKo-d3afRHQDskFJaZOW34QzXMXjZsSC2WkhWMVu-Z0E4divdsin_Vgv7qkWUCPKt-Y91LuZkIl5lUv7QTWOHuqiGbnnu_oTCkWoMh3Rf8jEOHPWnPKDGnt3tuTtiXGERNRo9HHZvcZ1_xSTKlkBAz3r06daJHMQz2ZVqup5LQSzS1X1s1cVh2Wuf89qCxjmPHRxfegMY9uDibaPzGRIUHHAUMsZTVarw0IkU" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); transform: scale(1);">
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-title-md text-on-surface mb-1">秋季漫步</h3>
+<p class="font-body-sm text-on-surface-variant">叠穿的艺术，兼顾温暖与格调</p>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-surface/70 dark:bg-surface/70 backdrop-blur-3xl border-t border-outline-variant/20">
+<!-- Closet Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined mb-1">checkroom</span>
+<span class="font-label-caps text-label-caps">衣橱</span>
+</a>
+<!-- Outfits Tab (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold bg-primary-container/20 rounded-full px-6 py-2 scale-105 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">styler</span>
+<span class="font-label-caps text-label-caps">搭配</span>
+</a>
+<!-- Profile Tab -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-caps text-label-caps">我的</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('article').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelector('img').style.transform = 'scale(1.05)';
+            });
+            card.querySelectorAll('img').forEach(img => {
+                img.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.querySelectorAll('img').forEach(img => {
+                    img.style.transform = 'scale(1)';
+                });
+            });
+        });
+
+        // Simple observer for scroll effects
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stagger-in').forEach(el => observer.observe(el));
+    </script>
+
+
+</body></html>

@@ -1,0 +1,16 @@
+# 依赖
+mobile/node_modules/
+mobile/.npm-cache/
+
+# Expo / React Native
+mobile/.expo/
+mobile/.android-sdk/
+mobile/android/
+*.log
+
+# 备份
+_portable/
+
+# 系统文件
+.DS_Store
+Thumbs.db

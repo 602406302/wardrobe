@@ -1,0 +1,31 @@
+# 依赖与构建产物
+node_modules/
+.expo/
+dist/
+web-build/
+*.tsbuildinfo
+
+# 本地环境与缓存
+.npm-cache/
+.env
+.env.local
+*.log
+npm-debug.*
+
+# Expo
+expo-env.d.ts
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 密钥(切勿提交)
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# IDE
+.vscode/
+.idea/

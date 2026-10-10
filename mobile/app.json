@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "Wardrobe Palette",
+    "slug": "wardrobe-palette",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "scheme": "wardrobe-palette",
+    "splash": {
+      "backgroundColor": "#f9f9fc",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wardrobe.palette"
+    },
+    "android": {
+      "package": "com.wardrobe.palette"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      "expo-sqlite",
+      "expo-secure-store",
+      "expo-asset",
+      "expo-sharing",
+      "expo-status-bar"
+    ]
+  }
+}

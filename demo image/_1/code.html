@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#c8c6c3",
+                    "tertiary": "#434341",
+                    "secondary-fixed-dim": "#b9cac2",
+                    "on-primary-container": "#cacfff",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#bac3ff",
+                    "tertiary-container": "#5b5a58",
+                    "primary-fixed": "#dee0ff",
+                    "secondary-fixed": "#d5e7de",
+                    "on-primary-fixed": "#00105c",
+                    "on-background": "#1a1c1e",
+                    "surface-container-high": "#e8e8ea",
+                    "on-tertiary-fixed-variant": "#474745",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#293ca0",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#1a1c1e",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#eeeef0",
+                    "on-secondary-container": "#586861",
+                    "surface-bright": "#f9f9fc",
+                    "outline": "#757684",
+                    "on-tertiary-container": "#d4d2cf",
+                    "on-secondary-fixed": "#0f1e19",
+                    "background": "#f9f9fc",
+                    "tertiary-fixed": "#e5e2df",
+                    "secondary-container": "#d5e7de",
+                    "surface-variant": "#e2e2e5",
+                    "surface": "#f9f9fc",
+                    "on-secondary-fixed-variant": "#3a4a44",
+                    "on-surface-variant": "#454652",
+                    "on-tertiary-fixed": "#1c1c1a",
+                    "inverse-surface": "#2f3133",
+                    "surface-container-highest": "#e2e2e5",
+                    "surface-container-low": "#f3f3f6",
+                    "primary-container": "#3f51b5",
+                    "secondary": "#52625b",
+                    "surface-tint": "#4355b9",
+                    "outline-variant": "#c5c5d4",
+                    "primary": "#24389c",
+                    "surface-dim": "#dadadc",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f0f0f3",
+                    "inverse-primary": "#bac3ff",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "stack-lg": "48px",
+                    "stack-md": "24px",
+                    "unit": "4px",
+                    "gutter": "16px",
+                    "container-padding-mobile": "20px",
+                    "container-padding-desktop": "40px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Manrope"],
+                    "display-lg": ["Manrope"],
+                    "title-md": ["Manrope"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Manrope"],
+                    "label-caps": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F8F5F2; /* Custom Milk White Base */
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .active-pill {
+            background-color: #3f51b5;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(63, 81, 181, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-lg text-on-surface antialiased pb-32">
+<!-- Top App Bar (As per JSON Blueprint) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-16 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30">
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-high/50 transition-colors p-2 rounded-full scale-102 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<span class="font-display-lg text-title-md text-primary tracking-tight">添加衣物</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A small, high-quality circular user profile avatar with soft studio lighting, showcasing a minimalist and professional aesthetic aligned with a premium wardrobe management application. The background is a soft neutral beige." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqbY401_btMvt5eyMm9iAlvk6Mq5S8YmTVya6UtcxelcvSX306JyI2zBMSBF19l3IEB52ruSRXxhugMMV-womK_b4EckJyXiLybHES65nBL0Hh8fqEmi8FUJumNBoLB55JUCdV_j81BPxHRbg5UV_OyGBsT3liWV6HJUmJJDrqqOEHfbd8Goapun4sL5HDr9x3vbIkuoxtYKy7LrnB_4eSiYSBxFzRGu57B_RFoNEXBwMM_uL9ae9a"/>
+</div>
+</header>
+<main class="mt-16 px-container-padding-mobile">
+<!-- Preview Image Section -->
+<section class="py-stack-md flex justify-center">
+<div class="relative group">
+<div class="w-48 h-64 rounded-xl overflow-hidden border border-outline-variant/30 bg-surface shadow-sm transition-transform scale-102">
+<img class="w-full h-full object-cover" data-alt="A high-end editorial photograph of a crisp, white linen shirt hanging on a minimalist wooden hanger against a clean milk-white wall. The lighting is soft and natural, emphasizing the texture of the fabric and the clean lines of the garment, consistent with a high-fashion wardrobe management app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3XQgMDtyIPM7QGx_xvy7k7u39yLueSYtoDbrIjRNQdg3BhFl1dcAk5NEWp8BXzha-KeeRg5Rsm5Xf8I-XJI4tKmup8sm2A4uTVtAT0c58JZUtOXoijpp1aHcq_n5vCL4BStnFQXpJFIFUNeUHpkIpj3Q2oHWT2lPYpm2ctK5MCVwpfk8QYiyYaFb-WSTJqpwTneLcHVDcz3LsEI2JxG6hEENMejuM7bf456fJAGssZS_LydMvg_GJ"/>
+</div>
+<button class="absolute -bottom-2 -right-2 bg-primary text-on-primary p-2 rounded-full shadow-lg scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</section>
+<!-- Category Selection -->
+<section class="mb-stack-md">
+<h3 class="font-title-md text-title-md mb-stack-sm text-on-surface">分类预设</h3>
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+<!-- Main Categories -->
+<button class="category-pill flex-shrink-0 px-6 py-2 rounded-full border border-outline-variant/50 bg-surface-container-low text-on-surface-variant font-medium transition-all active-pill" onclick="selectCategory(this, 'tops')">上装</button>
+<button class="category-pill flex-shrink-0 px-6 py-2 rounded-full border border-outline-variant/50 bg-surface-container-low text-on-surface-variant font-medium transition-all" onclick="selectCategory(this, 'bottoms')">下装</button>
+<button class="category-pill flex-shrink-0 px-6 py-2 rounded-full border border-outline-variant/50 bg-surface-container-low text-on-surface-variant font-medium transition-all" onclick="selectCategory(this, 'dresses')">连体衣</button>
+<button class="category-pill flex-shrink-0 px-6 py-2 rounded-full border border-outline-variant/50 bg-surface-container-low text-on-surface-variant font-medium transition-all" onclick="selectCategory(this, 'shoes')">鞋子</button>
+<button class="category-pill flex-shrink-0 px-6 py-2 rounded-full border border-outline-variant/50 bg-surface-container-low text-on-surface-variant font-medium transition-all" onclick="selectCategory(this, 'acc')">配饰</button>
+</div>
+<!-- Sub-categories (Dynamic) -->
+<div class="mt-stack-sm flex flex-wrap gap-2 animate-in fade-in slide-in-from-top-1 duration-300" id="sub-categories">
+<button class="sub-pill px-4 py-1.5 rounded-full border border-outline-variant/30 text-body-sm text-on-surface-variant hover:bg-primary/10 transition-colors">短袖 T</button>
+<button class="sub-pill px-4 py-1.5 rounded-full border border-outline-variant/30 text-body-sm text-on-surface-variant hover:bg-primary/10 transition-colors">长袖 T</button>
+<button class="sub-pill px-4 py-1.5 rounded-full border border-outline-variant/30 bg-primary-container/20 text-primary border-primary/20 font-medium">衬衫</button>
+<button class="sub-pill px-4 py-1.5 rounded-full border border-outline-variant/30 text-body-sm text-on-surface-variant hover:bg-primary/10 transition-colors">卫衣</button>
+<button class="sub-pill px-4 py-1.5 rounded-full border border-outline-variant/30 text-body-sm text-on-surface-variant hover:bg-primary/10 transition-colors">针织衫</button>
+<button class="sub-pill px-4 py-1.5 rounded-full border border-outline-variant/30 text-body-sm text-on-surface-variant hover:bg-primary/10 transition-colors">夹克</button>
+</div>
+</section>
+<!-- Color Picker -->
+<section class="mb-stack-md">
+<h3 class="font-title-md text-title-md mb-stack-sm text-on-surface">主要颜色</h3>
+<div class="grid grid-cols-6 gap-4">
+<button class="w-10 h-10 rounded-full bg-white border border-outline-variant ring-2 ring-primary ring-offset-2 transition-all"></button>
+<button class="w-10 h-10 rounded-full bg-black shadow-inner"></button>
+<button class="w-10 h-10 rounded-full bg-gray-400"></button>
+<button class="w-10 h-10 rounded-full bg-[#E5D3B3]"></button> <!-- Beige -->
+<button class="w-10 h-10 rounded-full bg-blue-900"></button>
+<button class="w-10 h-10 rounded-full bg-emerald-800"></button>
+<button class="w-10 h-10 rounded-full bg-red-800"></button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-high border border-dashed border-outline">
+<span class="material-symbols-outlined text-body-sm">palette</span>
+</button>
+</div>
+</section>
+<!-- Custom Tags & Notes -->
+<section class="space-y-stack-md">
+<div>
+<label class="block font-label-caps text-label-caps text-outline mb-2">自定义标签</label>
+<div class="relative">
+<input class="w-full bg-transparent border-b border-outline-variant py-2 focus:border-primary focus:ring-0 outline-none text-body-lg transition-colors placeholder:text-outline-variant/60" placeholder="输入标签按回车..." type="text"/>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="flex items-center gap-1 px-3 py-1 bg-secondary-container/30 text-on-secondary-container rounded-lg text-body-sm border border-secondary-container/50">
+                            # 简约 
+                            <button class="material-symbols-outlined text-[14px]">close</button>
+</span>
+<span class="flex items-center gap-1 px-3 py-1 bg-secondary-container/30 text-on-secondary-container rounded-lg text-body-sm border border-secondary-container/50">
+                            # 2024夏季 
+                            <button class="material-symbols-outlined text-[14px]">close</button>
+</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-outline mb-2">备注信息</label>
+<textarea class="w-full bg-surface-container-low/50 rounded-xl border border-outline-variant/30 p-4 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none text-body-sm resize-none transition-all placeholder:text-outline-variant/60" placeholder="添加面料、洗涤要求或购买来源..." rows="3"></textarea>
+</div>
+</section>
+</main>
+<!-- Bottom Action Button (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full p-container-padding-mobile bg-gradient-to-t from-background via-background to-transparent pointer-events-none">
+<div class="pointer-events-auto">
+<button class="w-full h-14 bg-primary text-on-primary font-title-md text-title-md rounded-2xl shadow-xl shadow-primary/20 scale-102 active:scale-95 transition-all flex items-center justify-center gap-3">
+<span class="material-symbols-outlined">inventory_2</span>
+                完成并入库
+            </button>
+</div>
+</div>
+<!-- Interaction Script -->
+<script>
+        function selectCategory(element, type) {
+            // Remove active class from all pills
+            document.querySelectorAll('.category-pill').forEach(pill => {
+                pill.classList.remove('active-pill');
+            });
+            // Add active class to clicked pill
+            element.classList.add('active-pill');
+
+            // Simulate sub-category update
+            const subContainer = document.getElementById('sub-categories');
+            const subData = {
+                'tops': ['短袖 T', '长袖 T', '衬衫', '卫衣', '针织衫', '夹克', '大衣'],
+                'bottoms': ['牛仔裤', '休闲裤', '短裤', '半身裙', '西装裤'],
+                'dresses': ['连衣裙', '连体裤', '吊带裙'],
+                'shoes': ['运动鞋', '皮鞋', '凉鞋', '靴子', '帆布鞋'],
+                'acc': ['帽子', '围巾', '皮带', '包袋', '首饰']
+            };
+
+            subContainer.innerHTML = '';
+            subData[type].forEach((label, index) => {
+                const btn = document.createElement('button');
+                btn.className = `sub-pill px-4 py-1.5 rounded-full border border-outline-variant/30 text-body-sm text-on-surface-variant hover:bg-primary/10 transition-colors ${index === 0 ? 'bg-primary-container/20 text-primary border-primary/20 font-medium' : ''}`;
+                btn.textContent = label;
+                btn.onclick = () => {
+                    document.querySelectorAll('.sub-pill').forEach(b => {
+                        b.classList.remove('bg-primary-container/20', 'text-primary', 'border-primary/20', 'font-medium');
+                    });
+                    btn.classList.add('bg-primary-container/20', 'text-primary', 'border-primary/20', 'font-medium');
+                };
+                subContainer.appendChild(btn);
+            });
+        }
+
+        // Color circle click interaction
+        document.querySelectorAll('button.rounded-full').forEach(btn => {
+            if (btn.classList.contains('w-10')) {
+                btn.onclick = () => {
+                    document.querySelectorAll('button.w-10').forEach(b => b.classList.remove('ring-2', 'ring-primary', 'ring-offset-2'));
+                    btn.classList.add('ring-2', 'ring-primary', 'ring-offset-2');
+                };
+            }
+        });
+    </script>
+</body></html>
